@@ -11,15 +11,15 @@ const SQ_M_PER_AANA = SQ_FT_PER_AANA * SQ_M_PER_SQ_FT; // ≈ 31.796
 const SQ_FT_PER_BIGHA = 72900;
 
 // Every Terai unit, measured in kattha.
-const TERAI_UNITS: Record<string, { name: string; Kattha: number }> = {
-  bhiga: { name: "bigha", Kattha: 20 },
-  kattha: { name: "kattha", Kattha: 1 },
-  dhur: { name: "dhur", Kattha: 1 / 20 },
+const TERAI_UNITS: Record<string, { name: string; inKattha: number }> = {
+  bhiga: { name: "bigha", inKattha: 20 },
+  kattha: { name: "kattha", inKattha: 1 },
+  dhur: { name: "dhur", inKattha: 1 / 20 },
 };
 
 function convertTerai(value: number, from: string, to: string): number {
-  const kattha = value * TERAI_UNITS[from].Kattha;
-  return kattha / TERAI_UNITS[to].Kattha;
+  const kattha = value * TERAI_UNITS[from].inKattha;
+  return kattha / TERAI_UNITS[to].inKattha;
 }
 
 // ─── Relatable comparisons ──────────────────────────────────────────────────
